@@ -46,9 +46,45 @@ namespace AddressBook
 
             Console.WriteLine("\n Contact added successfully!!");
             contact.Display();
+        }
 
+        public void EditContact()
+        {
+            Console.WriteLine("\nEnter the first name of the contact to edit: ");
+            string nameToEdit = Console.ReadLine();
 
+            Contact contact = contacts.Find(c => c.FirstName.Equals(nameToEdit, StringComparison.OrdinalIgnoreCase));
 
+            if(contact != null)
+            {
+                Console.WriteLine("\nContact found! Enter new details:");
+                Console.Write("Last Name: ");
+                contact.LastName = Console.ReadLine();
+
+                Console.Write("Address: ");
+                contact.Address = Console.ReadLine();
+
+                Console.Write("City: ");
+                contact.City = Console.ReadLine();
+
+                Console.Write("State: ");
+                contact.State = Console.ReadLine();
+
+                Console.Write("Zip Code: ");
+                contact.Zip = Console.ReadLine();
+
+                Console.Write("Phone Number: ");
+                contact.PhoneNumber = Console.ReadLine();
+
+                Console.Write("Email: ");
+                contact.Email = Console.ReadLine();
+
+                Console.WriteLine("\n✅ Contact updated successfully!");
+                contact.Display();
+            } else
+            {
+                Console.WriteLine("\n Contact not found with that first name.");
+            }
 
         }
     }
