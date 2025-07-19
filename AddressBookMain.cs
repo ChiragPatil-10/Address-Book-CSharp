@@ -14,6 +14,8 @@ namespace AddressBook
 
             addressbook.EditContact();
 
+            addressbook.DeleteContact();
+
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
 

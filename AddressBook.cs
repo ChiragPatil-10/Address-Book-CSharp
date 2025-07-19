@@ -79,13 +79,30 @@ namespace AddressBook
                 Console.Write("Email: ");
                 contact.Email = Console.ReadLine();
 
-                Console.WriteLine("\n✅ Contact updated successfully!");
+                Console.WriteLine("\n Contact updated successfully!");
                 contact.Display();
             } else
             {
                 Console.WriteLine("\n Contact not found with that first name.");
             }
 
+        }
+
+        public void DeleteContact()
+        {
+            Console.Write("\nEnter the first name of the contact to delete: ");
+            string name = Console.ReadLine();
+
+            Contact contactToRemove = contacts.FirstOrDefault(c => c.FirstName.Equals(name, StringComparison.OrdinalIgnoreCase));
+
+            if(contactToRemove != null)
+            {
+                contacts.Remove(contactToRemove);
+                Console.WriteLine("\n Contact deleted successfully.");
+            } else
+            {
+                Console.WriteLine("Contact not found with the given name.");
+            }
         }
     }
 }
