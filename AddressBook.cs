@@ -104,5 +104,23 @@ namespace AddressBook
                 Console.WriteLine("Contact not found with the given name.");
             }
         }
+
+        public void AddMultipleContacts()
+        {
+            bool addMore = true;
+
+            while(addMore)
+            {
+                AddContact();
+
+                Console.Write("\n Do you want to add another contact? (yes/no): ");
+                string response = Console.ReadLine().Trim().ToLower();
+
+                if(response != "yes" && response != "y")
+                {
+                    addMore = false;
+                }
+            }
+        }
     }
 }
