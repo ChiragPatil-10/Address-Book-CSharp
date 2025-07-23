@@ -24,6 +24,12 @@ namespace AddressBook
             Console.Write("Enter LastName: ");
             contact.LastName = Console.ReadLine();
 
+            if (contacts.Contains(contact))
+            {
+                Console.WriteLine("\nThis contact already exists in the address book. Duplicate not allowed.");
+                return;
+            }
+
             Console.Write("Enter Address: ");
             contact.Address = Console.ReadLine();
 
