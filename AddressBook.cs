@@ -109,7 +109,9 @@ namespace AddressBook
         {
             bool addMore = true;
 
+
             while (addMore)
+
             {
                 AddContact();
 
@@ -117,6 +119,7 @@ namespace AddressBook
                 string response = Console.ReadLine().Trim().ToLower();
 
                 if (response != "yes" && response != "y")
+
                 {
                     addMore = false;
                 }

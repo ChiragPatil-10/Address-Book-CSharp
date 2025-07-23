@@ -7,20 +7,38 @@ namespace AddressBook
         public static void Main (string[] args)
         {
             Console.WriteLine("Welcome to Address Book Computation Problem");
-            
-            AddressBook addressbook = new AddressBook();
 
-            addressbook.AddContact();
+            AddressBookSystem system = new AddressBookSystem();
 
-            addressbook.EditContact();
+            bool running = true;
+            while (running)
+            {
+                Console.WriteLine("\nAddress Book Menu:");
+                Console.WriteLine("1. Add New Address Book");
+                Console.WriteLine("2. Show All Address Book Names");
+                Console.WriteLine("0. Exit");
 
-            addressbook.DeleteContact();
+                Console.Write("\nSelect an option: ");
+                string choice = Console.ReadLine();
 
-            addressbook.AddMultipleContacts();
-
-            Console.WriteLine("\nPress any key to exit...");
-            Console.ReadKey();
-
+                switch (choice)
+                {
+                    case "1":
+                        system.AddAddressBook();
+                        break;
+                    case "2":
+                        system.DisplayAllAddressBooks();
+                        break;
+                    case "0":
+                        running = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid choice. Try again.");
+                        break;
+                }
+            }
+            Console.WriteLine("Exiting...");
         }
     }
+    
 }
