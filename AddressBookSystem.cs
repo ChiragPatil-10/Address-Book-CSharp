@@ -80,5 +80,77 @@ namespace AddressBook
                 Console.WriteLine("No contacts found in the given city or state.");
             }
         }
+
+        public void ViewPersonsByCityOrState()
+        {
+            Dictionary<string, List<Contact>> cityMap = new Dictionary<string, List<Contact>>();
+            Dictionary<string, List<Contact>> stateMap = new Dictionary<string, List<Contact>>();
+
+            // Collecting all contacts from all address books
+            foreach (var book in addressBooks.Values)
+            {
+                List<Contact> contacts = book.GetContacts();
+
+                foreach (Contact c in contacts)
+                {
+                    // Add to city map
+                    if (!cityMap.ContainsKey(c.City))
+                    {
+                        cityMap[c.City] = new List<Contact>();
+                    }
+                    cityMap[c.City].Add(c);
+
+                    // Add to state map
+                    if (!stateMap.ContainsKey(c.State))
+                    {
+                        stateMap[c.State] = new List<Contact>();
+                    }
+                    stateMap[c.State].Add(c);
+                }
+            }
+
+            Console.Write("View persons by (city/state): ");
+            string choice = Console.ReadLine().Trim().ToLower();
+
+            if (choice == "city")
+            {
+                Console.Write("Enter city name: ");
+                string city = Console.ReadLine();
+                if (cityMap.ContainsKey(city))
+                {
+                    Console.WriteLine($"\nPeople in {city}:");
+                    foreach (var person in cityMap[city])
+                    {
+                        person.Display();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No persons found in that city.");
+                }
+            }
+            else if (choice == "state")
+            {
+                Console.Write("Enter state name: ");
+                string state = Console.ReadLine();
+                if (stateMap.ContainsKey(state))
+                {
+                    Console.WriteLine($"\nPeople in {state}:");
+                    foreach (var person in stateMap[state])
+                    {
+                        person.Display();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No persons found in that state.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice.");
+            }
+        }
+
     }
 }

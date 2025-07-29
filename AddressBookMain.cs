@@ -17,6 +17,7 @@ namespace AddressBook
                 Console.WriteLine("1. Add New Address Book");
                 Console.WriteLine("2. Show All Address Book Names");
                 Console.WriteLine("3. Search Person by City or State");
+                Console.WriteLine("4. View Persons by City or State");
                 Console.WriteLine("0. Exit");
 
                 Console.Write("\nSelect an option: ");
@@ -32,6 +33,9 @@ namespace AddressBook
                         break;
                     case "3":
                         system.SearchPersonByCityOrState();
+                        break;
+                    case "4":
+                        system.ViewPersonsByCityOrState();
                         break;
                     case "0":
                         running = false;

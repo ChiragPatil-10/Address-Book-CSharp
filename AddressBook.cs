@@ -138,6 +138,11 @@ namespace AddressBook
                 c.State.Equals(location, StringComparison.OrdinalIgnoreCase)
             ).ToList();
         }
+        public List<Contact> GetContacts()
+        {
+            return contacts;
+        }
+
 
     }
 }
