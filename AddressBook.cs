@@ -61,7 +61,7 @@ namespace AddressBook
 
             Contact contact = contacts.Find(c => c.FirstName.Equals(nameToEdit, StringComparison.OrdinalIgnoreCase));
 
-            if(contact != null)
+            if (contact != null)
             {
                 Console.WriteLine("\nContact found! Enter new details:");
                 Console.Write("Last Name: ");
@@ -87,7 +87,8 @@ namespace AddressBook
 
                 Console.WriteLine("\n Contact updated successfully!");
                 contact.Display();
-            } else
+            }
+            else
             {
                 Console.WriteLine("\n Contact not found with that first name.");
             }
@@ -101,11 +102,12 @@ namespace AddressBook
 
             Contact contactToRemove = contacts.FirstOrDefault(c => c.FirstName.Equals(name, StringComparison.OrdinalIgnoreCase));
 
-            if(contactToRemove != null)
+            if (contactToRemove != null)
             {
                 contacts.Remove(contactToRemove);
                 Console.WriteLine("\n Contact deleted successfully.");
-            } else
+            }
+            else
             {
                 Console.WriteLine("Contact not found with the given name.");
             }
@@ -143,6 +145,21 @@ namespace AddressBook
             return contacts;
         }
 
+        public void SortContactsByName()
+        {
+            if (contacts.Count == 0)
+            {
+                Console.WriteLine("No contacts available to sort.");
+                return;
+            }
 
+            var sortedList = contacts.OrderBy(c => c.FirstName).ThenBy(c => c.LastName).ToList();
+
+            Console.WriteLine("\n Contacts Sorted Alphabetically:");
+            foreach (Contact contact in sortedList)
+            {
+                Console.WriteLine(contact); 
+            }
+        }
     }
 }

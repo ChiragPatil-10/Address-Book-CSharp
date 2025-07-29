@@ -19,6 +19,7 @@ namespace AddressBook
                 Console.WriteLine("3. Search Person by City or State");
                 Console.WriteLine("4. View Persons by City or State");
                 Console.WriteLine("5. Count Contacts by City or State");
+                Console.WriteLine("6. Sort Contacts in Address Book by Name");
                 Console.WriteLine("0. Exit");
 
                 Console.Write("\nSelect an option: ");
@@ -40,6 +41,9 @@ namespace AddressBook
                         break;
                     case "5":
                         system.CountContactsByCityOrState();
+                        break;
+                    case "6":
+                        system.SortAddressBookByName();
                         break;
                     case "0":
                         running = false;

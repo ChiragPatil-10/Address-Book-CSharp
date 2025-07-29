@@ -187,5 +187,27 @@ namespace AddressBook
                 Console.WriteLine($"{entry.Key} : {entry.Value} person(s)");
             }
         }
+
+        public void SortAddressBookByName()
+        {
+            if (addressBooks.Count == 0)
+            {
+                Console.WriteLine("No Address Books Available.");
+                return;
+            }
+
+            Console.Write("Enter the name of the Address Book to sort: ");
+            string bookName = Console.ReadLine();
+
+            if (addressBooks.ContainsKey(bookName))
+            {
+                addressBooks[bookName].SortContactsByName();
+            }
+            else
+            {
+                Console.WriteLine("Address Book not found.");
+            }
+        }
+
     }
 }
