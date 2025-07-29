@@ -209,5 +209,50 @@ namespace AddressBook
             }
         }
 
+        public void SortAddressBookByCityStateOrZip()
+        {
+            if (addressBooks.Count == 0)
+            {
+                Console.WriteLine(" No Address Books available.");
+                return;
+            }
+
+            Console.Write("Enter Address Book Name to Sort: ");
+            string bookName = Console.ReadLine();
+
+            if (!addressBooks.ContainsKey(bookName))
+            {
+                Console.WriteLine(" Address Book not found.");
+                return;
+            }
+
+            AddressBook book = addressBooks[bookName];
+
+            Console.WriteLine("\n Sort Contacts By:");
+            Console.WriteLine("1. City");
+            Console.WriteLine("2. State");
+            Console.WriteLine("3. Zip");
+
+            Console.Write("Enter your choice: ");
+            string sortChoice = Console.ReadLine();
+
+            switch (sortChoice)
+            {
+                case "1":
+                    book.SortByCity();
+                    break;
+                case "2":
+                    book.SortByState();
+                    break;
+                case "3":
+                    book.SortByZip();
+                    break;
+                default:
+                    Console.WriteLine(" Invalid choice.");
+                    break;
+            }
+        }
+
+
     }
 }

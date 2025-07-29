@@ -161,5 +161,57 @@ namespace AddressBook
                 Console.WriteLine(contact); 
             }
         }
+
+        public void SortByCity()
+        {
+            if (contacts.Count == 0)
+            {
+                Console.WriteLine("No contacts to sort.");
+                return;
+            }
+
+            var sorted = contacts.OrderBy(c => c.City).ToList();
+
+            Console.WriteLine("\n Contacts Sorted by City:");
+            foreach (var contact in sorted)
+            {
+                Console.WriteLine(contact);
+            }
+        }
+
+        public void SortByState()
+        {
+            if (contacts.Count == 0)
+            {
+                Console.WriteLine(" No contacts to sort.");
+                return;
+            }
+
+            var sorted = contacts.OrderBy(c => c.State).ToList();
+
+            Console.WriteLine("\n Contacts Sorted by State:");
+            foreach (var contact in sorted)
+            {
+                Console.WriteLine(contact);
+            }
+        }
+
+        public void SortByZip()
+        {
+            if (contacts.Count == 0)
+            {
+                Console.WriteLine(" No contacts to sort.");
+                return;
+            }
+
+            var sorted = contacts.OrderBy(c => c.Zip).ToList();
+
+            Console.WriteLine("\n Contacts Sorted by Zip:");
+            foreach (var contact in sorted)
+            {
+                Console.WriteLine(contact);
+            }
+        }
+
     }
 }
