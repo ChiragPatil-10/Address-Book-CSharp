@@ -45,5 +45,40 @@ namespace AddressBook
                 Console.WriteLine($"- {name}");
             }
         }
+
+        public void SearchPersonByCityOrState()
+        {
+            Console.Write("Enter City or State to search for: ");
+            string input = Console.ReadLine();
+
+            Console.WriteLine($"\n Searching for contacts in '{input}'...\n");
+
+            bool found = false;
+
+            foreach (var kvp in addressBooks)
+            {
+                string bookName = kvp.Key;
+                AddressBook book = kvp.Value;
+
+                var matchingContacts = book.GetContactsByCityOrState(input);
+
+                if (matchingContacts.Count > 0)
+                {
+                    found = true;
+                    Console.WriteLine($"\n Address Book: {bookName}");
+
+                    foreach (var contact in matchingContacts)
+                    {
+                        contact.Display();
+                        Console.WriteLine();
+                    }
+                }
+            }
+
+            if (!found)
+            {
+                Console.WriteLine("No contacts found in the given city or state.");
+            }
+        }
     }
 }
