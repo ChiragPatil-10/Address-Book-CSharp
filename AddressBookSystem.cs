@@ -152,5 +152,40 @@ namespace AddressBook
             }
         }
 
+        public void CountContactsByCityOrState()
+        {
+            Dictionary<string, int> cityCounts = new Dictionary<string, int>();
+            Dictionary<string, int> stateCounts = new Dictionary<string, int>();
+
+            foreach (var book in addressBooks.Values)
+            {
+                List<Contact> contacts = book.GetContacts();
+
+                foreach (Contact c in contacts)
+                {
+                    if (cityCounts.ContainsKey(c.City))
+                        cityCounts[c.City]++;
+                    else
+                        cityCounts[c.City] = 1;
+
+                    if (stateCounts.ContainsKey(c.State))
+                        stateCounts[c.State]++;
+                    else
+                        stateCounts[c.State] = 1;
+                }
+            }
+
+            Console.WriteLine("\nCount of Contacts by City:");
+            foreach (var entry in cityCounts)
+            {
+                Console.WriteLine($"{entry.Key} : {entry.Value} person(s)");
+            }
+
+            Console.WriteLine("\nCount of Contacts by State:");
+            foreach (var entry in stateCounts)
+            {
+                Console.WriteLine($"{entry.Key} : {entry.Value} person(s)");
+            }
+        }
     }
 }
