@@ -131,5 +131,13 @@ namespace AddressBook
                 }
             }
         }
+        public List<Contact> GetContactsByCityOrState(string location)
+        {
+            return contacts.Where(c =>
+                c.City.Equals(location, StringComparison.OrdinalIgnoreCase) ||
+                c.State.Equals(location, StringComparison.OrdinalIgnoreCase)
+            ).ToList();
+        }
+
     }
 }
